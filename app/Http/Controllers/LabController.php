@@ -32,9 +32,9 @@ class LabController extends Controller
         $lab = Lab::all();
         $centers = Center::select('id', 'center_name')->get();
         $category = Category::select('id', 'category_name')->get();
-        $course = Course::select('id', 'course_name')->get();
+       // $course = Course::select('id', 'course_name')->get();
         $trainer = Trainer::select('id', 'trainer_name')->get();
-        return view('admin.lab.create',compact('centers','lab','category','course','trainer'));
+        return view('admin.lab.create',compact('centers','lab','category','trainer'));
     }
 
     /**
@@ -47,28 +47,16 @@ class LabController extends Controller
     {
         $request->validate([
             'lab_name'=>'required',
-            'from'=>'required',
-            'to'=>'required',
             'center_id'=>'required',
-            'category_id'=>'required',
-            'course_id'=>'required',
-            'trainer_id'=>'required',
-
         ]);
 
      $lab = Lab::create([
             'lab_name'=>$request->lab_name,
-            'from'=>$request->from,
-            'to'=>$request->to,
             'center_id'=>$request->center_id,
-            'category_id'=>$request->category_id,
-            'course_id'=>$request->course_id,
-            'trainer_id'=>$request->trainer_id,
-           
-            
+
      ]);
 
-     return redirect()->route('admin.lab.index')->with('msg','Lab Reservation added successfully')->with('type','success');
+     return redirect()->route('admin.lab.index')->with('msg','تم إضافة المركز بنجاح')->with('type','success');
     
     }
 
@@ -92,7 +80,8 @@ class LabController extends Controller
     public function edit($id)
     {
         $lab = Lab::findOrFail($id);
-        return view('admin.lab.edit',compact('lab'));
+        $centers = Center::select('id', 'center_name')->get();
+        return view('admin.lab.edit',compact('lab','centers'));
     }
 
     /**
@@ -106,29 +95,19 @@ class LabController extends Controller
     {
         $request->validate([
             'lab_name'=>'required',
-            'from'=>'required',
-            'to'=>'required',
             'center_id'=>'required',
-            'category_id'=>'required',
-            'course_id'=>'required',
-            'trainer_id'=>'required',
 
-        ]);
+        ]); 
 
         $lab = Lab::find($id);
     
      $lab->update([
             'lab_name'=>$request->lab_name,
-            'from'=>$request->from,
-            'to'=>$request->to,
-            'center_name'=>$request->center_name,
-            'category_id'=>$request->category_id,
-            'course_name'=>$request->course_name,
-            'trainer_id'=>$request->trainer_id,
+            'center_id'=>$request->center_id,
             
      ]);
 
-     return redirect()->route('admin.lab.index')->with('msg','Reservation Lab Updated successfully')->with('type','success');
+     return redirect()->route('admin.lab.index')->with('msg','تم تعديل بيانات المختبر بنجاح')->with('type','success');
    
     }
 
@@ -141,7 +120,7 @@ class LabController extends Controller
     public function destroy($id)
     {
         Lab::destroy($id);
-        return redirect()->route('admin.lab.index')->with('msg','Reservation lab deleted successfully')->with('type','danger');
+        return redirect()->route('admin.lab.index')->with('msg','تم حذف المختبر بنجاح')->with('type','danger');
       
     }
 }

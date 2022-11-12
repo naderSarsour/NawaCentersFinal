@@ -48,7 +48,7 @@ class CategoryController extends Controller
             
      ]);
    
-     return redirect()->route('admin.category.index')->with('msg','Category added successfully')->with('type','success');
+     return redirect()->route('admin.category.index')->with('msg','تم إضافة الفئة بنجاح')->with('type','success');
     
     }
 
@@ -97,7 +97,7 @@ class CategoryController extends Controller
             'category_age'=>$request->category_age,            
      ]);
     
-     return redirect()->route('admin.category.index')->with('msg','Category Updated successfully')->with('type','success');
+     return redirect()->route('admin.category.index')->with('msg','تم تعديل بيانات الفئة بنجاح')->with('type','success');
 
     }
 
@@ -110,7 +110,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect()->route('admin.category.index')->with('msg','Category deleted successfully')->with('type','danger');
+        return redirect()->route('admin.category.index')->with('msg','تم حذف الفئة بنجاح')->with('type','danger');
      
     }
 }

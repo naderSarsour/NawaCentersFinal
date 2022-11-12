@@ -18,7 +18,9 @@ class CreateTrainersTable extends Migration
             $table->string('trainer_name');
             $table->string('mobile');
             $table->string('qualification');
+            $table->string('cv');
             $table->string('image')->nullable();
+            $table->enum('type',['داخلي','خارجي']);
             $table->timestamps();
         });
     }

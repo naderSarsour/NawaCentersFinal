@@ -22,12 +22,20 @@ class Lab extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
+    // public function course()
+    // {
+    //     return $this->belongsTo(Course::class);
+    // }
     public function trainer()
     {
         return $this->belongsTo(Trainer::class);
+    }
+    public function lab()
+    {
+        return $this->hasMany(Course::class);
+    }
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
     }
 }

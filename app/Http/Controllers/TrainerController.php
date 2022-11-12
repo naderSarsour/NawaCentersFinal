@@ -14,6 +14,7 @@ class TrainerController extends Controller
      */
     public function index()
     {
+        
         $trainer = Trainer::all();
         return view('admin.trainer.index',compact('trainer'));
     }
@@ -38,7 +39,9 @@ class TrainerController extends Controller
     {
         $request->validate([
             'trainer_name'=>'required',
-            'image'=>'required |image|mimes:png,jpg',
+            'type'=>'required',
+            'image'=>'nullable |image|mimes:png,jpg',
+            'cv'=>'nullable |file',
             'mobile'=>'required',
             'qualification'=>'required',
          //    'phone'=>'max:10|min:5',
@@ -46,18 +49,22 @@ class TrainerController extends Controller
         ]);
      //    dd($request->except('_token'));
      //upload the file
-     $imgname= time() . rand() . $request->file('image')->getClientOriginalName();
+     $imgname= rand() . $request->file('image');
+     $cvfile=  rand() . $request->file('cv');
      
     
      $trainer = Trainer::create([
             'trainer_name'=>$request->trainer_name,
             'image'=>$imgname,
+            'cv'=>$cvfile,
             'mobile'=>$request->mobile,
             'qualification'=>$request->qualification,
+            'type'=>$request->type,
             
      ]);
      if($trainer){
-        $request->file('image')->move(public_path('uploads'),$imgname);
+      //  $request->file('image')->move(public_path('uploads'),$imgname);
+      //  $request->file('cv')->move(public_path('uploads'),$cvfile);
      }
      return redirect()->route('admin.trainer.index')->with('msg','trainer added successfully')->with('type','success');
      
@@ -97,32 +104,37 @@ class TrainerController extends Controller
     {
         $request->validate([
             'trainer_name'=>'required',
+            'type'=>'required',
             'image'=>'nullable|image|mimes:png,jpg',
+            'cv'=>'nullable |file',
             'mobile'=>'required',
             'qualification'=>'required',
-         //    'phone'=>'max:10|min:5',
-         //    'price'=>'regex:09',
         ]);
 
         $trainer = Trainer::find($id);
         $imgname= $trainer->image;
+        $cvfile= $trainer->cv;
         if($request->hasFile('image')){
-            $imgname= 'nawa_culture_'.time() . rand() . $request->file('image')->getClientOriginalName();
+            $imgname= 'nawa_culture_'.$request->file('image')->getClientOriginalName();
         }
-     //    dd($request->except('_token'));
-     //upload the file
-     
-     
-    
+        if($request->hasFile('cv')){            
+                $cvfile= 'nawa_culture_'.$request->file('cv')->getClientOriginalName();
+            }
+
      $trainer->update([
             'trainer_name'=>$request->trainer_name,
+            'type'=>$request->type,
             'image'=>$imgname,
+            'cv'=>$cvfile,
             'mobile'=>$request->mobile,
             'qualification'=>$request->qualification,
             
      ]);
      if($request->hasFile('image')){
         $request->file('image')->move(public_path('uploads'),$imgname);
+     }
+     if($request->hasFile('cv')){
+        $request->file('cv')->move(public_path('uploads'),$cvfile);
      }
      return redirect()->route('admin.trainer.index')->with('msg','Trainer Updated successfully')->with('type','success');
    

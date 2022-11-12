@@ -4,8 +4,8 @@
 
 <div class="container my-5">
 <div class="d-flex justify-content-between align-items-center">
-    <h1>Edit Trainer : <span class="text-danger">{{$trainer->trainer_name}}</span></h1>
-<a class="btn btn-outline-dark" href="{{route('admin.trainer.index')}}">Return Back</a>
+    <h1>تعديل بيانات المدرب :<span class="text-danger">{{$trainer->trainer_name}}</span></h1>
+<a class="btn btn-outline-dark" href="{{route('admin.trainer.index')}}">رجوع</a>
 </div>  
 @include('admin.errors')      
   <div class="card">
@@ -14,12 +14,21 @@
             @csrf
             @method('put')
             <div class="mb-3">
-                <lable>Trainer Name</lable>
-                <input type="text" name="trainer_name" value="{{old('trainer_name',$trainer->trainer_name)}}" placeholder="trainer_name" class="form-control" />
+                <lable>اسم المدرب</lable>
+                <input type="text" name="trainer_name" value="{{old('trainer_name',$trainer->trainer_name)}}" placeholder="اسم المدرب" class="form-control" />
+          
+            </div>
+        <div class="mb-3">
+                <lable>نوع المدرب</lable>
+                <select name="type" class="form-control"> 
+                    <option value=""> -- اختر --</option> 
+                    <option value="داخلي">داخلي</option>
+                    <option value="خارجي">خارجي</option>
+                </select>
           
             </div>
             <div class="mb-3">
-                <lable>Image</lable>
+                <lable>صورة المدرب</lable>
                 <input type="file" name="image"  class="form-control" />
                  {{-- @if ($trainer->image)  --}}
                 <img class="mt-1 img-thumbnail" width="200" src="{{asset('uploads/'.$trainer->image)}}" alt="">                    
@@ -27,22 +36,26 @@
                
             </div>
             <div class="mb-3">
-                <lable>Mobile</lable>
-                <input type="text" name="mobile" value="{{old('mobile',$trainer->mobile)}}" placeholder="mobile" class="form-control" />
+                <lable>هاتف المدرب</lable>
+                <input type="text" name="mobile" value="{{old('mobile',$trainer->mobile)}}" placeholder="هاتف المدرب" class="form-control" />
           
             </div>
             <div class="mb-3">
-                <lable>qualification</lable>
-                <input type="text" name="qualification" value="{{old('qualification',$trainer->qualification)}}" placeholder="qualification" class="form-control" />
+                <lable>تخصص المدرب</lable>
+                <input type="text" name="qualification" value="{{old('qualification',$trainer->qualification)}}" placeholder="تخصص المدرب" class="form-control" />
           
             </div>
-            <button class="ntn btn-primary">Edit</button>
+            <lable>السيرة الذاتية للمدرب</lable>
+                <input type="file" name="cv" value="{{old('qualification',$trainer->cv)}}"  class="form-control" />
+                 {{-- @if ($trainer->image)  --}}
+                {{-- <img src="{{asset('uploads/'.$trainer->cv)}}" alt=""> --}}
+             <div>  {{asset('uploads/'.$trainer->cv)}}</div> 
+            <button class="ntn btn-primary">تعديل</button>
         </form>
       </div>
   </div>
 
 </div> 
  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+
 @stop

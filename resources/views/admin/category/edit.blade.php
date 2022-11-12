@@ -4,8 +4,8 @@
 
 <div class="container my-5">
 <div class="d-flex justify-content-between align-items-center">
-    <h1>Edit category : <span class="text-danger">{{$category->category_name}}</span></h1>
-<a class="btn btn-outline-dark" href="{{route('admin.category.index')}}">Return Back</a>
+    <h1>:تعديل الفئة <span class="text-danger">{{$category->category_name}}</span></h1>
+<a class="btn btn-outline-dark" href="{{route('admin.category.index')}}">رجوع</a>
 </div>  
 @include('admin.errors')      
   <div class="card">
@@ -14,16 +14,16 @@
             @csrf
             @method('put')
             <div class="mb-3">
-                <lable>Category Name</lable>
-                <input type="text" name="category_name" value="{{old('category_name',$category->category_name)}}" placeholder="category_name" class="form-control" />
+                <lable>اسم الفئة العمرية </lable>
+                <input type="text" name="category_name" value="{{old('category_name',$category->category_name)}}" placeholder="اسم الفئة" class="form-control" />
           
             </div>
             <div class="mb-3">
-                <lable>Category Age</lable>
-                <input type="text" name="category_age" value="{{old('category_age',$category->category_age)}}" placeholder="number_of_hour" class="form-control" />
+                <lable>نطاق عمر الفئة</lable>
+                <input type="text" name="category_age" value="{{old('category_age',$category->category_age)}}" placeholder="نطاق العمر للفئة" class="form-control" />
           
             </div>
-            <button class="ntn btn-primary">Edit</button>
+            <button class="ntn btn-primary">تعديل</button>
         </form>
       </div>
   </div>

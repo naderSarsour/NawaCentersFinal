@@ -4,7 +4,7 @@
 
 <div class="container my-5">
 <div class="d-flex justify-content-between align-items-center">
-    <h1>Edit Lab : <span class="text-danger">{{$lab->lab_name}}</span></h1>
+    <h1>تعديل المختبر : <span class="text-danger">{{$lab->lab_name}}</span></h1>
 <a class="btn btn-outline-dark" href="{{route('admin.lab.index')}}">Return Back</a>
 </div>  
 @include('admin.errors')      
@@ -14,21 +14,14 @@
             @csrf
             @method('put')
             <div class="mb-3">
-                <lable>Lab Name</lable>
-                <input type="text" name="lab_name" value="{{old('lab_name',$lab->lab_name)}}" placeholder="lab_name" class="form-control" />
-          
+                <lable>اسم المختبر</lable>
+                <input type="text" name="lab_name" value="{{old('lab_name',$lab->lab_name)}}" placeholder="اسم المختبر" class="form-control" />
             </div>
             <div class="mb-3">
-                <lable>Mobile</lable>
-                <input type="text" name="mobile" value="{{old('mobile',$lab->mobile)}}" placeholder="mobile" class="form-control" />
-          
+                <lable>اسم المركز</lable>
+                <select name="center_id" id="center_id" class="form-control"> <option value=""> -- Select One --</option> @foreach ($centers as $center) <option value="{{ $center->id }}">{{ $center->center_name }}</option> @endforeach </select>
             </div>
-            <div class="mb-3">
-                <lable>qualification</lable>
-                <input type="text" name="qualification" value="{{old('qualification',$lab->qualification)}}" placeholder="qualification" class="form-control" />
-          
-            </div>
-            <button class="ntn btn-primary">Edit</button>
+            <button class="ntn btn-primary">تعديل</button>
         </form>
       </div>
   </div>

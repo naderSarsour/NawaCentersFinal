@@ -1,12 +1,12 @@
   <!-- Sidebar -->
   
   <ul class= "navbar-nav data-mdb-position:absolute bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="navbar-brand  mx-5" href="{{route('website.home')}}">
+    <a class="navbar-brand  mx-5" href="{{route('admin.index')}}">
         <img width="100"  src="{{asset('websiteasset/images/logo.png')}}" alt="">
       </a>
-    <div>مؤسسة نوى للثقافة والفنون </div>
+    <div  style="background-color:white;color:black;">جمعية نوى للثقافة والفنون </div>
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('website.home')}}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.index')}}">
       
         
     </a>
@@ -22,6 +22,37 @@
     </li>
 
     <!-- Divider -->
+
+    <hr class="sidebar-divider">
+    <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents"
+           aria-expanded="true" aria-controls="collapseEvents">
+           <i class="fas fa-fw fa-calendar"></i>
+           <span>المراكز</span>
+       </a>
+       <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+           <div class="bg-white py-2 collapse-inner rounded">
+               <a class="collapse-item" href="{{ route('admin.center.index')}}">المراكز</a>
+               <a class="collapse-item" href="{{ route('admin.center.create')}}">إضافة مركز جديد</a>
+           </div>
+       </div>
+   </li>
+   <hr class="sidebar-divider">
+    <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecalender"
+           aria-expanded="true" aria-controls="collapsecalender">
+           <i class="fas fa-fw fa-calendar"></i>
+           <span>المطوية</span>
+       </a>
+       <div id="collapsecalender" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+           <div class="bg-white py-2 collapse-inner rounded">
+               <a class="collapse-item" href="{{ route('admin.calender1.index')}}">المطويات</a>
+               <a class="collapse-item" href="{{ route('admin.calender1.create')}}">إضافة مطوية جديدة</a>
+           </div>
+       </div>
+   </li>
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -51,29 +82,12 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.course.index')}}">الدورات </a>
                 <a class="collapse-item" href="{{ route('admin.course.create')}}">إضافة دورة جديدة </a>
+                <a class="collapse-item" href="{{ route('admin.course.calender')}}"> حجوزات جميع المراكز  </a>
 
             </div>
         </div>
         </li>
-                {{-- @if(Auth::user()->type == 'super-admin') --}}
-                 <!-- Divider -->
-                 <hr class="sidebar-divider">
-                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents"
-                        aria-expanded="true" aria-controls="collapseEvents">
-                        <i class="fas fa-fw fa-calendar"></i>
-                        <span>المراكز</span>
-                    </a>
-                    <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.center.index')}}">المراكز</a>
-                            <a class="collapse-item" href="{{ route('admin.center.create')}}">إضافة مركز جديد</a>
-                        </div>
-                    </div>
-                </li>
-                {{-- @endif --}}
-                
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <li class="nav-item">
@@ -106,6 +120,20 @@
     </li>
     <hr class="sidebar-divider d-none d-md-block">
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseactivity"
+            aria-expanded="true" aria-controls="collapseactivity">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>الأنشطة</span>
+        </a>
+        <div id="collapseactivity" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.activity.index')}}">الأنشطة</a>
+                <a class="collapse-item" href="{{ route('admin.activity.create')}}">إضافة نشاط</a>
+            </div>
+        </div>
+    </li>
+    <hr class="sidebar-divider d-none d-md-block">
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

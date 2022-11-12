@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    {{-- lang="ar" dir="rtl" --}}
 <head>
 
     <meta charset="utf-8">
@@ -9,8 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Nawa Culure</title>
-
+    <title>جمعية النوى</title>
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
     <!-- Custom fonts for this template-->
     <link href="{{asset('adminasset/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
@@ -19,6 +21,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('adminasset/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('js/fullcalendar/lib/main.css') }}" rel="stylesheet" />
 
 </head>
 
@@ -108,17 +111,29 @@
                 </div>
                 <!-- /.container-fluid -->
 
+                <footer class="sticky-footer bg-white" style="
+                    position: absolute;
+                    width: -webkit-fill-available;
+                    bottom: 0;
+                    /* left: 0; */
+                    text-align: center;"
+                >
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; جمعية النوى {{date('Y')}}</span>
+                        </div>
+                    </div>
+                </footer>
+
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Nawa Culture {{date('Y')}}</span>
-                    </div>
-                </div>
-            </footer>
+            
+            {{-- $s= $courses->updated_at;
+                              $d=date();
+                             @endphp --}}
+                              {{-- @if(  > ) --}} 
             <!-- End of Footer -->
 
         </div>
@@ -151,17 +166,45 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('adminasset/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('adminasset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+   
+    {{-- Begin footer --}}
+    {{-- <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; جمعية النوى {{date('Y')}}</span>
+            </div>
+        </div>
+    </footer> --}}
+        {{-- end footer --}}
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{ mix('js/app.js') }}"></script>
+        {{-- <script src="{{asset('adminasset/vendor/jquery/jquery.min.js')}}"></script> --}}
+        <script src="{{asset('adminasset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        @stack('scripts')
+        <!-- Core plugin JavaScript-->
+        {{-- <script src="{{asset('adminasset/vendor/jquery-easing/jquery.easing.min.js')}}"></script> --}}
+        
+        <!-- Custom scripts for all pages-->
+        <script src="{{asset('adminasset/js/sb-admin-2.min.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('adminasset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('adminasset/js/sb-admin-2.min.js')}}"></script>
-
-</body>
-
-</html>
+        <script src="{{asset('js/fullcalendar/lib/main.js') }}"></script>
+        <script>
+    
+          document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            if(calendarEl != undefined) {
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    events: '/myfeed.php'
+                });
+                calendar.render();
+            }
+          });
+    
+        </script>
+        </body>
+        </html>

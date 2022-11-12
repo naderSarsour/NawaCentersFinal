@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Lab;
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -14,5 +15,14 @@ class Center extends Model
     public function lab()
     {
         return $this->hasMany(Lab::class);
+    }
+
+    public function course()
+    {
+        return $this->hasMany(Course::class);
+    }
+    public function courses()
+    {
+        return $this->hasMany(Course::class,'center_id','id');
     }
 }

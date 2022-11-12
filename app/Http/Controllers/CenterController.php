@@ -47,7 +47,7 @@ class CenterController extends Controller
           
      ]);
    
-     return redirect()->route('admin.center.index')->with('msg','Center added successfully')->with('type','success');
+     return redirect()->route('admin.center.index')->with('msg','تم إضافة المركز بنجاح')->with('type','success');
     
     }
 
@@ -94,7 +94,7 @@ class CenterController extends Controller
             'center_name'=>$request->center_name,
      ]);
     
-     return redirect()->route('admin.center.index')->with('msg','Center Updated successfully')->with('type','success');
+     return redirect()->route('admin.center.index')->with('msg','تم تعديل المركز بنجاح')->with('type','success');
    
     }
 
@@ -107,7 +107,7 @@ class CenterController extends Controller
     public function destroy($id)
     {
         Center::destroy($id);
-        return redirect()->route('admin.center.index')->with('msg','center deleted successfully')->with('type','danger');
+        return redirect()->route('admin.center.index')->with('msg','تم حذف المركز بنجاح')->with('type','danger');
      
     }
 }

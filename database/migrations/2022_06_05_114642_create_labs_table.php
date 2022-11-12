@@ -16,13 +16,8 @@ class CreateLabsTable extends Migration
         Schema::create('labs', function (Blueprint $table) {
             $table->id();
             $table->string('lab_name');
-            $table->datetime('from');
-            $table->datetime('to');
             $table->timestamps();
             $table->foreignId('center_id');
-            $table->foreignId('category_id');
-            $table->foreignId('course_id');
-            $table->foreignId('trainer_id');
         });
     }
 

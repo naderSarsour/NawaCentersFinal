@@ -4,8 +4,8 @@
 
 <div class="container my-5">
 <div class="d-flex justify-content-between align-items-center">
-    <h1>Add New category</h1>
-<a class="btn btn-outline-dark" href="{{route('admin.category.index')}}">Return Back</a>
+    <h1>إضافة فئة جديدة</h1>
+<a class="btn btn-outline-dark" href="{{route('admin.category.index')}}">رجوع</a>
 </div>  
 @include('admin.errors')      
   <div class="card">
@@ -13,18 +13,18 @@
         <form class="container my-5" action="{{route('admin.category.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <lable>category Name</lable>
-                <input type="text" name="category_name" value="{{old('category_name')}}" placeholder="category_name" class="form-control" />
+                <lable>اسم الفئة</lable>
+                <input type="text" name="category_name" value="{{old('category_name')}}" placeholder="اسم الفئة" class="form-control" />
           
             </div>
 
             <div class="mb-3">
-                <lable>Number Of Hours</lable>
-                <input type="text" name="category_age" value="{{old('category_age')}}" placeholder="category_age" class="form-control" />
+                <lable>نطاق العمر للفئة</lable>
+                <input type="text" name="category_age" value="{{old('category_age')}}" placeholder="نطاق العمر للفئة" class="form-control" />
           
             </div>
 
-            <button class="ntn btn-primary">Add</button>
+            <button class="ntn btn-primary">إضافة</button>
         </form>
       </div>
   </div>

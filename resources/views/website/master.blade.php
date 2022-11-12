@@ -22,7 +22,7 @@
 
     <nav id="main-nav" class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="{{route('website.home')}}">
+        <a class="navbar-brand" href="{{route('admin.index')}}">
           <img width="50" src="{{asset('websiteasset/images/logo.png')}}" alt="">
           NAWA Culture
         </a>
